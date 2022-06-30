@@ -25,4 +25,7 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::resource("mensagem", MensagemController::class);
+    Route::resource("topico", TopicoController::class);
 });
