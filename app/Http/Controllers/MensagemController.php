@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Mensagem;
+use App\Models\Topico;
 use Illuminate\Http\Request;
+use Iluminate\Support\Facades\Auth;
 
 class MensagemController extends Controller
 {
@@ -86,7 +89,18 @@ class MensagemController extends Controller
      */
     public function update(Request $request, Mensagem $mensagem)
     {
-        //
+        $validated = $request->validated([
+            'titulo' => 'required|max:255',
+            'mensagem' => 'required|max:255',
+            'topico' => 'array|exist:App\Models\Topicos,id'
+        ]);
+        if ($validated) {
+            $mensagem->titulo = $request->get('titulo');
+            $mensagem->menssagem = $request->get('mensagem');
+            $mensagem->save();
+            $mensagem->topicos()->sync($request->get('topico'));
+            return redirect('mensagem');
+        }
     }
 
     /**
@@ -97,6 +111,7 @@ class MensagemController extends Controller
      */
     public function destroy(Mensagem $mensagem)
     {
-        //
+        $mensagem->delete();
+        return redirect("mensagem");
     }
 }

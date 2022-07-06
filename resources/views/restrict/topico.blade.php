@@ -1,4 +1,4 @@
-@extends('restrict')
+@extends('restrict.layout')
 
 @section('content')
 
@@ -18,8 +18,10 @@
         <tr>
             <td>{{$topico->topico}}</td>
             <td>
-                <a href="{{route('topico.edit', $topico->id)}}" class="button"></a>
-                Editar
+                <a href="{{route('topico.edit', $topico->id)}}" class="button">
+                    Editar    
+                </a>
+                
             </td>
             <td>
                 <form action="POST" action="{{route('topico.destroy', $topico->id)}}" onsubmit="return confirm('tem certeza?'):">

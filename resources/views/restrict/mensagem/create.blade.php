@@ -1,7 +1,7 @@
 @extends('restrict.layout')
 
 @section('content')
-@if(count($erros) > 0)
+@if(count($errors) > 0)
 <ul class="validator">
     @foreach($errors->all() as $error)
     <li>{{$error}}</li>
@@ -13,7 +13,7 @@
     @method('POST')
         <div>
             <label for="titulo">Título</label>
-            <input type="text" name="titulo" id="titulo" value="{{ old(titulo) }}" required />
+            <input type="text" name="titulo" id="titulo" value="{{ old('titulo') }}" required />
         </div>
         <div>
             <label for="msg">Mensagem</label>

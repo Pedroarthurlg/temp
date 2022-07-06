@@ -1,8 +1,8 @@
-@extendends('restrict.layout')
+@extends('restrict.layout')
 
 @section('content')
 <div>
-    <a href="{{url('mensagen/create')}}" class="button">Adicionar</a>
+    <a href="{{url('mensagem/create')}}" class="button">Adicionar</a>
 </div>
 <table>
     <thead>
@@ -16,7 +16,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach($mensagens as mensagem)
+        @foreach($mensagens as $mensagem)
         <tr>
             <td>{{$mensagem->user->name}}</td>
             <td>{{$mensagem->titulo}}</td>

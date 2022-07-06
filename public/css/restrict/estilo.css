@@ -19,7 +19,7 @@
 header {
     display: flex;
     border-bottom: 0.5rem solid
-    var(--secondary);
+var(--secondary);
 }
 
 header picture img {
